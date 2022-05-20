@@ -1,0 +1,26 @@
+{
+	"React Functional Component": {
+		"prefix": "RNFC",
+		"body": [
+			"import React, { FC } from \"react\"",
+			"import { StyleSheet, View } from \"react-native\"",
+			"",
+			"type ${1:name}Props = {}",
+			"",
+			"export const ${1:name}: FC<${1:name}Props> = (props) => {",
+			"  return (",
+			"    <View style={styles.container}>",
+			"      $2",
+			"    </View>",
+			"  )",
+			"};",
+			"",
+			"const styles = StyleSheet.create({",
+			"  container: {",
+			"    flex: 1",
+			"  }",
+			"});"
+		],
+		"description": "React native Functional Component"
+	}
+}

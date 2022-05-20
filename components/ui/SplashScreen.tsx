@@ -1,11 +1,18 @@
+import { FC, useCallback, useEffect, useMemo, useRef, useState } from "react"
+import LottieView from "lottie-react-native"
+import { Animated, StyleSheet, View } from "react-native"
+import * as ExpoSplashScreen from "expo-splash-screen"
+import { StatusBar } from "expo-status-bar"
+
 import { theme } from "@config/theme"
 import { loadAssets } from "@lib/preload-assets"
-import * as ExpoSplashScreen from "expo-splash-screen"
-import { FC, useCallback, useEffect, useMemo, useState } from "react"
-import { Animated, StyleSheet, View } from "react-native"
-import { Heading } from "./typography"
 
 export const SplashScreen: FC = ({ children }) => {
+  const ref = useRef<LottieView>(null)
+
+  const [isAppReady, setAppReady] = useState(false)
+  const [isSplashAnimationComplete, setAnimationComplete] = useState(false)
+
   const animatedValues = useMemo(() => {
     return {
       y: new Animated.Value(50),
@@ -13,8 +20,15 @@ export const SplashScreen: FC = ({ children }) => {
       backgroundOpacity: new Animated.Value(1),
     }
   }, [])
-  const [isAppReady, setAppReady] = useState(false)
-  const [isSplashAnimationComplete, setAnimationComplete] = useState(false)
+
+  useEffect(() => {
+    setTimeout(() => ref.current?.play())
+
+    return () => {
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      ref.current?.reset()
+    }
+  }, [])
 
   useEffect(() => {
     onLoad()
@@ -47,7 +61,7 @@ export const SplashScreen: FC = ({ children }) => {
   const onLoad = useCallback(async () => {
     try {
       await ExpoSplashScreen.preventAutoHideAsync()
-      // Load stuff
+      // load stuff
       await Promise.all([loadAssets()])
     } catch (e) {
       // handle errors
@@ -60,6 +74,7 @@ export const SplashScreen: FC = ({ children }) => {
 
   return (
     <View style={{ flex: 1 }}>
+      <StatusBar style={isSplashAnimationComplete ? "dark" : "light"} />
       {isAppReady && children}
       {!isSplashAnimationComplete && (
         <Animated.View
@@ -74,7 +89,12 @@ export const SplashScreen: FC = ({ children }) => {
             },
           ]}
         >
-          <Heading color="white">Welcome</Heading>
+          <LottieView
+            ref={ref}
+            autoPlay
+            loop
+            source={require("../../assets/animations/loading.json")}
+          />
         </Animated.View>
       )}
     </View>
