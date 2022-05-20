@@ -8,16 +8,22 @@ interface StyleSheetProps {
 export const styles = StyleSheet.create<StyleSheetProps>({
   container: {
     overflow: "hidden",
-    borderRadius: 6,
+    borderRadius: 12,
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    padding: 12,
+    padding: theme.spacing.md,
   },
   "button-primary": {
-    backgroundColor: theme.colors.white,
+    backgroundColor: theme.colors.black,
   },
   "button-primary-pressed": {
+    backgroundColor: theme.colors.lightBlack,
+  },
+  "button-secondary": {
+    backgroundColor: theme.colors.white,
+  },
+  "button-secondary-pressed": {
     backgroundColor: theme.colors.lightGrey,
   },
   "button-outline": {
@@ -29,6 +35,12 @@ export const styles = StyleSheet.create<StyleSheetProps>({
     backgroundColor: theme.colors.lightGrey,
     borderWidth: 1,
     borderColor: theme.colors.black,
+  },
+  "button-ghost": {
+    backgroundColor: "transparent",
+  },
+  "button-ghost-pressed": {
+    opacity: 0.6,
   },
   iconLeft: {
     marginLeft: 8,

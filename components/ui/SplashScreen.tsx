@@ -6,12 +6,14 @@ import { StatusBar } from "expo-status-bar"
 
 import { theme } from "@config/theme"
 import { loadAssets } from "@lib/preload-assets"
+import useOnboardingStore from "@lib/stores/useOnboarding"
 
 export const SplashScreen: FC = ({ children }) => {
   const ref = useRef<LottieView>(null)
 
   const [isAppReady, setAppReady] = useState(false)
   const [isSplashAnimationComplete, setAnimationComplete] = useState(false)
+  const { state: onBoardingState } = useOnboardingStore()
 
   const animatedValues = useMemo(() => {
     return {
@@ -74,7 +76,13 @@ export const SplashScreen: FC = ({ children }) => {
 
   return (
     <View style={{ flex: 1 }}>
-      <StatusBar style={isSplashAnimationComplete ? "dark" : "light"} />
+      <StatusBar
+        style={
+          isSplashAnimationComplete && onBoardingState.finished
+            ? "dark"
+            : "light"
+        }
+      />
       {isAppReady && children}
       {!isSplashAnimationComplete && (
         <Animated.View

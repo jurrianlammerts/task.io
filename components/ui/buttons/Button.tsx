@@ -15,7 +15,7 @@ export type ButtonProps = PressableProps & {
   icon?: ButtonIconType
   iconPosition?: "left" | "right"
   status?: "loading" | "idle"
-  variant?: "primary" | "outline"
+  variant?: "primary" | "secondary" | "outline" | "ghost"
   size?: "medium" | "large"
   onPress: () => void
   style?: StyleProp<ViewStyle>
@@ -26,20 +26,16 @@ export const Button: FC<ButtonProps> = ({
   status = "idle",
   iconPosition = "left",
   variant = "primary",
-  size = "medium",
   onPress,
   children,
   style,
 }) => {
-  const innerColorKey = variant === "primary" ? "white" : "black"
+  const innerColorKey =
+    variant === "primary" || variant === "ghost" ? "white" : "black"
   let inner = null
 
   const text = (
-    <Text
-      color={innerColorKey}
-      weight="medium"
-      style={styles[`text-${variant}`]}
-    >
+    <Text color={innerColorKey} weight="bold" style={styles[`text-${variant}`]}>
       {children}
     </Text>
   )
