@@ -9,8 +9,8 @@ export const theme = {
     orange: "#ec931e",
   },
   fontFamily: {
-    regular: "LufgaRegular",
-    medium: "LufgaMedium",
+    regular: "KarlaRegular",
+    bold: "KarlaBold",
   },
   fontSize: {
     micro: 12,

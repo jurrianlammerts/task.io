@@ -6,12 +6,12 @@ import { styles } from "./Heading.styles"
 type HeadingProps = TextProps & {
   color?: keyof Theme["colors"]
   style?: StyleProp<TextStyle>
-  size: keyof typeof styles
+  size?: keyof typeof styles
 }
 
 export const Heading: FC<HeadingProps> = ({
   children,
-  size,
+  size = "h1",
   color = "black",
   style,
   ...rest

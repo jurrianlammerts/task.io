@@ -1,9 +1,8 @@
 import { TextStyle, StyleSheet } from "react-native"
 
 const defaultStyles: TextStyle = {
-  fontFamily: "LufgaBold",
+  fontFamily: "LatoBlack",
   fontStyle: "normal",
-  fontWeight: "900",
 }
 
 type StyleTypes = {
@@ -38,13 +37,13 @@ export const styles = StyleSheet.create<StyleTypes>({
   },
   h5: {
     ...defaultStyles,
-    fontFamily: "LufgaMedium",
+    fontFamily: "LatoRegular",
     fontSize: 18,
     lineHeight: 24,
   },
   h6: {
     ...defaultStyles,
-    fontFamily: "LufgaMedium",
+    fontFamily: "LatoRegular",
     fontSize: 16,
     lineHeight: 21,
   },

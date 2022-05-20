@@ -10,22 +10,19 @@ import {
 
 type TextProps = RNTextProps & {
   size?: "micro" | "small" | "regular" | "large"
-  weight?: "regular" | "medium"
-  variant?: "regular" | "link" | "danger"
+  weight?: "regular" | "bold"
   style?: StyleProp<TextStyle>
   color?: keyof Theme["colors"]
 }
 
 const defaultStyles: TextStyle = {
-  fontFamily: "LufgaRegular",
+  fontFamily: "KarlaRegular",
   fontStyle: "normal",
-  fontWeight: "400",
 }
 
 export const Text: FC<TextProps> = ({
   size = "regular",
   weight = "regular",
-  variant = "regular",
   style,
   color,
   children,
