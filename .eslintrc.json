@@ -1,0 +1,22 @@
+{
+  "extends": ["react-app"],
+  "env": {
+    "browser": true,
+    "jasmine": true,
+    "jest": true
+  },
+  "settings": {
+    "react": {
+      "pragma": "React",
+      "version": "detect"
+    }
+  },
+  "rules": {
+    "react/style-prop-object": "off",
+    "jsx-a11y/anchor-is-valid": "off",
+    "@typescript-eslint/no-angle-bracket-type-assertion": "off",
+    "no-console": ["warn", { "allow": ["info", "error", "warn"] }]
+  },
+  "parser": "@typescript-eslint/parser",
+  "ignorePatterns": ["coverage", "node_modules"]
+}

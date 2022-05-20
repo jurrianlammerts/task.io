@@ -1,6 +1,33 @@
 {
-  "extends": "expo/tsconfig.base",
   "compilerOptions": {
-    "strict": true
-  }
+    "jsx": "react-native",
+    "strict": true,
+    "baseUrl": ".",
+    "allowSyntheticDefaultImports": true,
+    "noEmit": true,
+    "paths": {
+      "@icons/*": [
+        "./assets/icons/*"
+      ],
+      "@assets/*": [
+        "./assets/*"
+      ],
+      "@components/*": [
+        "./components/*"
+      ],
+      "@screens/*": [
+        "./screens/*"
+      ],
+      "@lib/*": [
+        "./lib/*"
+      ],
+      "@navigation/*": [
+        "./navigation/*"
+      ],
+      "@config/*": [
+        "./config/*"
+      ],
+    }
+  },
+  "extends": "expo/tsconfig.base"
 }
