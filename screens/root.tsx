@@ -13,6 +13,7 @@ import { HomeIcon } from "@components/ui/icons/24/HomeIcon"
 import { BellIcon } from "@components/ui/icons/24/BellIcon"
 import { theme } from "@config/theme"
 import { AvatarIcon } from "@components/ui/icons/24/AvatarIcon"
+import { Badge } from "@components/ui/Badge"
 
 const Tab = createBottomTabNavigator<RootTabParamList>()
 const Stack = createStackNavigator<RootStackParamList>()
@@ -57,6 +58,7 @@ export const RootTabNavigator = () => {
         }}
       >
         <BellIcon />
+        <Badge />
       </TouchableOpacity>
     ),
   }
